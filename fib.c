@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// recursive implementation of fibonacci function
 int fib(int n)
 {
     if (n <= 1)
@@ -13,12 +14,13 @@ int fib(int n)
 
 int main(void)
 {
-    int num;
+    int n;
 
     printf("Input number of terms for the Series (<20): ");
-    scanf("%d", & num);
+    scanf("%d", & n);
 
-    for (int i = 0; i < num; i++)
+    // prints fibonacci numbers from 0 to n
+    for (int i = 0; i < n; i++)
     {
         int value = fib(i);
         printf("%d ", value);
