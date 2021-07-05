@@ -8,6 +8,7 @@ struct Stack
     int capacity;
 };
 
+// this function grows stack without using realloc
 void grow_stack(struct Stack *s, int increase)
 {
     int *temp = s->array;
