@@ -37,9 +37,9 @@ void swap_elements(int *array, int i, int j)
 // best case: O(n)
 void bubble_sort(int *array, int n)
 {
-    int i, pass = 1, swap_flag;
+    int i, pass, swap_flag;
 
-    do
+    for (pass = 1; pass <= n - 1; pass++)
     {
         swap_flag = 0;
 
@@ -47,18 +47,23 @@ void bubble_sort(int *array, int n)
         // n - pass, prevents going out of bounds
         for (i = 0; i < n - pass; i++)
         {
-            if (array[i] > array[i + 1])
+            if(array[i] > array[i + 1])
             {
                 swap_elements(array, i, i + 1);
                 swap_flag = 1;
             }
         }
+        
+        // uncomment code below to see each pass:
+        // printf("pass %d: ", pass);
+        // print_array(array, n);
 
-        // pass continues to increase, causing the amount of elements -
-        // in the array that need to be compared - to decrease
-        pass++;
-
-    } while (swap_flag == 1);
+        // early termination
+        if (swap_flag == 0)
+        {
+            break;
+        }
+    }
 }
 
 // ./a.out 10 <--- will create array of length 10
@@ -86,6 +91,8 @@ int main(int argc, char **argv)
 
     printf("Bubble Sorted Array:\n");
     print_array(array, n);
+
+    free(array);
 
     return 0;
 }
